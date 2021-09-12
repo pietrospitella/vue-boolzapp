@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/fav_boolz.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Boolzap</title>
+</head>
+<body>
+    <div id="root" class="container w-100">
+        <div class="wrapper">
+            <div class="col_left">
+                <div id="user_info" class="w-100">
+                    <div id="user_info_left">
+                        <div id="user_img">
+                            <img src="img/avatar_io.jpg" alt="io">
+                        </div>
+                        <div id="user_name">
+                            <h4>Paolo Dossetto</h4>
+                        </div>
+                    </div>
+                    <div id="user_info_right">
+                        <div id="user_opt">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="notification_badge" class="w-100">
+                    <i class="fas fa-bell-slash"></i>
+                    <div id="notif_text">
+                        <h5>Ricevi notifiche di nuovi messaggi</h5>
+                        <h6>Attiva notifiche desktop</h6>
+                    </div>
+                </div>
+                <div id="search_bar" class="w-100">
+                    <div id="search_bar_icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" name="" id="input_search">
+                </div>
+                <div id="chat_list" class="w-100">
+                    <div v-for="contact in contacts" id="chat_item">
+                        <div id="item_img">
+                            <img :src="'img/avatar`${contact.avatar}`.jpg'" alt="">
+                        </div>
+                        <div id="item_text">
+                            <h4>{{contact.name}}</h4>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col_right">
+                <div id="top_bar" class="w-100"></div>
+                <div id="chat_bg" class="w-100"></div>
+                <div id="writing_bar" class="w-100"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
