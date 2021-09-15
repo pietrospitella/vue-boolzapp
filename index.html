@@ -45,9 +45,9 @@
                     <input type="text" placeholder="Cerca o inizia una nuova chat" name="" id="input_search">
                 </div>
                 <div id="chat_list" class="w-100">
-                    <div v-for="contact in contacts" id="chat_item">
+                    <div @click="chatSelect(index)" v-for="(contact, index) in contacts" id="chat_item">
                         <div id="item_img">
-                            <img :src="'img/avatar`${contact.avatar}`.jpg'" alt="">
+                            <img :src="'img/avatar'+ contact.avatar + '.jpg'" alt="">
                         </div>
                         <div id="item_text">
                             <h4>{{contact.name}}</h4>
@@ -57,9 +57,33 @@
                 </div>
             </div>
             <div class="col_right">
-                <div id="top_bar" class="w-100"></div>
-                <div id="chat_bg" class="w-100"></div>
-                <div id="writing_bar" class="w-100"></div>
+                <div id="top_bar" class="w-100">
+                    <div id="tb_left">
+                        <img id="receiver_img" :src="'img/avatar' + contacts[activeContact].avatar + '.jpg' " alt="" srcset="">
+                        <div id="receiver_text">
+                            <h4>{{contacts[activeContact].name}}</h4>
+                            <p>Ultimo accesso alle </p>
+                        </div>
+                    </div>
+                    <div id="receiver_opt">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div id="chat_bg" class="w-100">
+                    <div v-for="(message, index) in contacts[activeContact].messages" class="bubble_block">
+                        <div :class="(contacts[activeContact].messages[index].status == 'sent' ) ? 'sent' : 'received' " class="bubble">
+                            <div class="bubble_text">{{message.message}}</div>
+                            <div class="bubble_time">{{message.date}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="writing_bar" class="w-100">
+                    <i class="far fa-smile"></i>
+                    <input type="text" name="" placeholder="Scrivi un messaggio" id="input_write">
+                    <i class="fas fa-microphone"></i>
+                </div>
             </div>
         </div>
     </div>
