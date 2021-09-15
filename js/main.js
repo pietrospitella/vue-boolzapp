@@ -6,6 +6,8 @@ const app = new Vue (
         data: {
             activeContact: 0,
             messageBar: "",
+            search: "",
+            // menuView: false,
             contacts: [
                 {
                     name: 'Michele',
@@ -89,19 +91,29 @@ const app = new Vue (
                 },
             ]
         },
+        computed: {
+            searchNames() {
+                return this.contacts.filter(contact => contact.name.toLowerCase().match(this.search.toLowerCase())
+                );
+            }
+        },
         methods: {
             chatSelect(index){
                 this.activeContact = index;
             },
             addMsg(){
                 if(this.messageBar != ""){
-                    this.contacts[this.activeContact].messages.push({date: '10/01/2020 15:50:00', message: this.messageBar, status: 'sent'});
+                    this.contacts[this.activeContact].messages.push({date: dayjs().format('DD/MM/YYYY HH:mm:ss'), message: this.messageBar, status: 'sent'});
                     this.messageBar = "";
                 }
             },
             botReply(){
-                this.contacts[this.activeContact].messages.push({date: '10/01/2020 15:50:00', message: "Ok", status: 'received'});
-            }
+                this.contacts[this.activeContact].messages.push({date: dayjs().format('DD/MM/YYYY HH:mm:ss'), message: "Ok", status: 'received'});
+            },
+            // showMenu(){
+            //     menuView = true;
+            //     document.getElementById("dropdown").style.display = "block";
+            // }            
         }
     }
 )

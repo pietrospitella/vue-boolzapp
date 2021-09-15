@@ -191,7 +191,7 @@ body {
 .bubble_block{
     width: 100%;
     min-height: 45px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     position: relative;
 }
 
@@ -204,19 +204,31 @@ body {
     min-height: 45px;
 }
 
-.tick_left{
+.bubble i {
+    color: #697485;
     position: absolute;
-    top: 0.5px;
-    left: -8px;
-    color: #FFFFFF
+    top: 5px;
+    right: 7px;
+    display: none;
 }
-.tick_right{
-    position: absolute;
-    top: 0.5px;
-    right: -8px;
-    color: #FFFFFF
+.bubble:hover i{
+    display: block;
 }
 
+/* #dropdown {
+    border-radius: 4px;
+    background-color: #697485;
+    color: #FFFFFF;
+    display: none;
+}
+
+#dropdown ul{
+    padding: 5px
+}
+
+#dropdown ul li {
+    list-style: none;
+} */
 
 .bubble_time{
    font-size: 7.5px; 

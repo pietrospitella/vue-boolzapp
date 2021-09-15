@@ -42,10 +42,10 @@
                     <div id="search_bar_icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" name="" id="input_search">
+                    <input type="search" v-model="search" placeholder="Cerca o inizia una nuova chat" name="" id="input_search">
                 </div>
                 <div id="chat_list" class="w-100">
-                    <div @click="chatSelect(index)" v-for="(contact, index) in contacts" id="chat_item">
+                    <div @click="chatSelect(index)" v-for="(contact, index) in searchNames" id="chat_item">
                         <div id="item_img">
                             <img :src="'img/avatar'+ contact.avatar + '.jpg'" alt="">
                         </div>
@@ -62,7 +62,7 @@
                         <img id="receiver_img" :src="'img/avatar' + contacts[activeContact].avatar + '.jpg' " alt="" srcset="">
                         <div id="receiver_text">
                             <h4>{{contacts[activeContact].name}}</h4>
-                            <p>Ultimo accesso alle </p>
+                            <p>Ultimo accesso alle {{dayjs().format('HH:mm')}}</p>
                         </div>
                     </div>
                     <div id="receiver_opt">
@@ -76,6 +76,12 @@
                         <div :class="(contacts[activeContact].messages[index].status == 'sent' ) ? 'sent' : 'received' " class="bubble">
                             <div class="bubble_text">{{message.message}}</div>
                             <div class="bubble_time">{{message.date}}</div>
+                            <!-- <i @click="showMenu" class="fas fa-chevron-down"></i>
+                            <div id="dropdown">
+                                <ul>
+                                    <li @click="null">Cancella messaggio</li>
+                                </ul>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -87,6 +93,7 @@
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="js/main.js"></script>
 </body>
