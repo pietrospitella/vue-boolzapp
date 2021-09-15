@@ -81,7 +81,7 @@
                 </div>
                 <div id="writing_bar" class="w-100">
                     <i class="far fa-smile"></i>
-                    <input type="text" name="" placeholder="Scrivi un messaggio" id="input_write">
+                    <input @keyup.enter="addMsg(); setTimeout(botReply, 1000)" type="text" v-model="messageBar" name="" placeholder="Scrivi un messaggio" id="input_write">
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>

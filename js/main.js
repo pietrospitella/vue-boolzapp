@@ -5,6 +5,7 @@ const app = new Vue (
         el: "#root",
         data: {
             activeContact: 0,
+            messageBar: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -91,6 +92,15 @@ const app = new Vue (
         methods: {
             chatSelect(index){
                 this.activeContact = index;
+            },
+            addMsg(){
+                if(this.messageBar != ""){
+                    this.contacts[this.activeContact].messages.push({date: '10/01/2020 15:50:00', message: this.messageBar, status: 'sent'});
+                    this.messageBar = "";
+                }
+            },
+            botReply(){
+                this.contacts[this.activeContact].messages.push({date: '10/01/2020 15:50:00', message: "Ok", status: 'received'});
             }
         }
     }
